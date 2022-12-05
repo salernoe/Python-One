@@ -1,2 +1,3 @@
-# Python-One
-Python One proyecto final 
+## Herramientas
+- [Visual TK](https://visualtk.com)
+- [DB Browser for SQLite](https://sqlitebrowser.org)
