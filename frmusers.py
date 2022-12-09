@@ -1,14 +1,15 @@
 from tkinter import *
 import tkinter.font as tkFont
 import tkinter.ttk as ttk
+import tkinter.messagebox as tkMsgBox
 import bll.usuarios as user
 from frmuser import User
 
 class Users(Toplevel):
     def __init__(self, master=None):
-        super().__init__(master)
-        self.select_id = -1
-        self.master = master        
+        super().__init__(master)        
+        self.master = master
+        self.select_id = -1        
         self.title("Listado de Usuarios")        
         width=800
         height=500
@@ -40,7 +41,8 @@ class Users(Toplevel):
         tv.heading("nombre", text="Nombre", anchor=CENTER)
         tv.heading("email", text="Correo electrónico", anchor=CENTER)
         tv.heading("rol", text="Rol", anchor=CENTER)
-        tv.bind("<<TreeviewSelect>>", self.obtener_fila)          
+        tv.bind("<<TreeviewSelect>>", self.obtener_fila)
+        tv.place(x=10,y=40,width=750,height=300)          
         
         self.refrescar()
 
@@ -85,10 +87,13 @@ class Users(Toplevel):
         User(self, True)
 
     def editar(self): 
-        pass
+        User(self, True, self.select_id)
 
     def eliminar(self):
-        pass
+        answer =  tkMsgBox.askokcancel(self.master.master.title(), "¿Está seguro de eliminar este registro?")   
+        if answer:
+            user.eliminar(self.select_id)
+            self.refrescar()
 
     # https://www.youtube.com/watch?v=n0usdtoU5cE
     def refrescar(self):        
@@ -97,5 +102,4 @@ class Users(Toplevel):
             tvUsuarios.delete(record)
         usuarios = user.listar()
         for usuario in usuarios:
-            tvUsuarios.insert("", END, text=usuario[0], values=(usuario[6], usuario[1], usuario[2], usuario[5], usuario[8]))        
-        tvUsuarios.place(x=10,y=40,width=750,height=300)
+            tvUsuarios.insert("", END, text=usuario[0], values=(usuario[6], usuario[1], usuario[2], usuario[5], usuario[8])) 
