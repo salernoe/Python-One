@@ -2,6 +2,7 @@ import tkinter as tk
 import tkinter.font as tkFont
 from frmpeliculas import pelicula
 
+
 class organizacion(tk.Toplevel):
     def __init__(self, master=None):
         super().__init__(master)
@@ -66,11 +67,11 @@ class organizacion(tk.Toplevel):
         GButton_345["command"] = self.GButton_345_command
 
     def abrir_peliculas(self):
-        pelicula.self
+        pelicula(self)
 
 
     def GButton_148_command(self):
-        print("command")
+        Print("hola")
 
 
     def GButton_773_command(self):
