@@ -4,6 +4,7 @@ from frmusers import Users
 from fmsalas import salas
 from frmreservas import reservas
 from frmdescuentos import descuentos
+from frmorganizacion import organizacion
 
 class Dashboard(tk.Toplevel):
     def __init__(self, master=None):
@@ -91,4 +92,4 @@ class Dashboard(tk.Toplevel):
         reservas(self)
 
     def abrir_organizacion(self):
-        print("organizacion")
+        organizacion(self)
