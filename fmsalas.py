@@ -1,20 +1,20 @@
 import tkinter as tk
 import tkinter.font as tkFont
 
-class App:
-    def __init__(self, root):
-        #setting title
-        root.title("undefined")
-        #setting window size
+class salas(tk.Toplevel):
+    def __init__(self, master=None):
+        super().__init__(master)
+        self.master = master
+        self.title("Salas") 
         width=519
         height=143
-        screenwidth = root.winfo_screenwidth()
-        screenheight = root.winfo_screenheight()
+        screenwidth = self.winfo_screenwidth()
+        screenheight = self.winfo_screenheight()
         alignstr = '%dx%d+%d+%d' % (width, height, (screenwidth - width) / 2, (screenheight - height) / 2)
-        root.geometry(alignstr)
-        root.resizable(width=False, height=False)
+        self.geometry(alignstr)
+        self.resizable(width=False, height=False)
 
-        GLabel_18=tk.Label(root)
+        GLabel_18=tk.Label(self)
         ft = tkFont.Font(family='Times',size=10)
         GLabel_18["font"] = ft
         GLabel_18["fg"] = "#333333"
@@ -22,7 +22,7 @@ class App:
         GLabel_18["text"] = "Fecha"
         GLabel_18.place(x=20,y=30,width=83,height=30)
 
-        GLineEdit_854=tk.Entry(root)
+        GLineEdit_854=tk.Entry(self)
         GLineEdit_854["borderwidth"] = "1px"
         ft = tkFont.Font(family='Times',size=10)
         GLineEdit_854["font"] = ft
@@ -31,7 +31,7 @@ class App:
         GLineEdit_854["text"] = ""
         GLineEdit_854.place(x=90,y=30,width=138,height=33)
 
-        GLabel_983=tk.Label(root)
+        GLabel_983=tk.Label(self)
         ft = tkFont.Font(family='Times',size=10)
         GLabel_983["font"] = ft
         GLabel_983["fg"] = "#333333"
@@ -39,7 +39,7 @@ class App:
         GLabel_983["text"] = "hora"
         GLabel_983.place(x=20,y=80,width=70,height=25)
 
-        GLineEdit_526=tk.Entry(root)
+        GLineEdit_526=tk.Entry(self)
         GLineEdit_526["borderwidth"] = "1px"
         ft = tkFont.Font(family='Times',size=10)
         GLineEdit_526["font"] = ft
@@ -48,7 +48,7 @@ class App:
         GLineEdit_526["text"] = ""
         GLineEdit_526.place(x=90,y=80,width=139,height=30)
 
-        GLabel_495=tk.Label(root)
+        GLabel_495=tk.Label(self)
         ft = tkFont.Font(family='Times',size=10)
         GLabel_495["font"] = ft
         GLabel_495["fg"] = "#333333"
@@ -56,7 +56,7 @@ class App:
         GLabel_495["text"] = "Pelicula"
         GLabel_495.place(x=280,y=30,width=70,height=25)
 
-        GListBox_901=tk.Listbox(root)
+        GListBox_901=tk.Listbox(self)
         GListBox_901["borderwidth"] = "1px"
         ft = tkFont.Font(family='Times',size=10)
         GListBox_901["font"] = ft
@@ -64,7 +64,7 @@ class App:
         GListBox_901["justify"] = "center"
         GListBox_901.place(x=360,y=80,width=140,height=30)
 
-        GLabel_534=tk.Label(root)
+        GLabel_534=tk.Label(self)
         ft = tkFont.Font(family='Times',size=10)
         GLabel_534["font"] = ft
         GLabel_534["fg"] = "#333333"
@@ -72,14 +72,11 @@ class App:
         GLabel_534["text"] = "salas"
         GLabel_534.place(x=280,y=80,width=70,height=25)
 
-        GListBox_71=tk.Listbox(root)
+        GListBox_71=tk.Listbox(self)
         GListBox_71["borderwidth"] = "1px"
         ft = tkFont.Font(family='Times',size=10)
         GListBox_71["font"] = ft
         GListBox_71["fg"] = "#333333"
         GListBox_71["justify"] = "center"
         GListBox_71.place(x=360,y=30,width=145,height=30)
-if __name__ == "__main__":
-    root = tk.Tk()
-    app = App(root)
-    root.mainloop()
+

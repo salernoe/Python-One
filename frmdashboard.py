@@ -1,6 +1,7 @@
 import tkinter as tk
 import tkinter.font as tkFont
 from frmusers import Users
+from fmsalas import salas
 
 class Dashboard(tk.Toplevel):
     def __init__(self, master=None):
@@ -53,11 +54,39 @@ class Dashboard(tk.Toplevel):
         GButton_430.place(x=370,y=40,width=165,height=45)
         GButton_430["command"] = self.abrir_descuentos
 
+        GButton_246=tk.Button(self)
+        GButton_246["bg"] = "#f0f0f0"
+        ft = tkFont.Font(family='Times',size=10)
+        GButton_246["font"] = ft
+        GButton_246["fg"] = "#000000"
+        GButton_246["justify"] = "center"
+        GButton_246["text"] = "Reservas"
+        GButton_246.place(x=10,y=120,width=165,height=45)
+        GButton_246["command"] = self.abrir_reservas
+
+        GButton_248=tk.Button(self)
+        GButton_248["bg"] = "#f0f0f0"
+        ft = tkFont.Font(family='Times',size=10)
+        GButton_248["font"] = ft
+        GButton_248["fg"] = "#000000"
+        GButton_248["justify"] = "center"
+        GButton_248["text"] = "Organización"
+        GButton_248.place(x=190,y=120,width=165,height=45)
+        GButton_248["command"] = self.abrir_organizacion
+
+
+
     def abrir_usuarios(self):
         Users(self)
 
     def abrir_salas(self):
-        print("salas")
+        salas(self)
 
     def abrir_descuentos(self):
         print("descuentos")
+
+    def abrir_reservas(self):
+        print("reservas")
+
+    def abrir_organizacion(self):
+        print("organizacion")
