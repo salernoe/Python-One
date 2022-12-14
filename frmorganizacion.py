@@ -4,6 +4,7 @@ from frmpeliculas import pelicula
 from frmtipo_de_pelicula import tipo_de_pelicula
 from frmbutacas import butacas
 from frmsesion import sesion
+from frmclasificacion import clasificacion
 
 class organizacion(tk.Toplevel):
     def __init__(self, master=None):
@@ -73,7 +74,7 @@ class organizacion(tk.Toplevel):
 
 
     def abrir_clasificacion(self):
-         print("command")
+         clasificacion(self)
 
 
     def GButton_773_command(self):
