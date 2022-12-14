@@ -1,11 +1,11 @@
 import tkinter as tk
 import tkinter.font as tkFont
 
-class clasificacion(tk.Toplevel):
+class tipo_de_pelicula(tk.Toplevel):
     def __init__(self, master=None):
         super().__init__(master)
         self.master = master
-        self.title("Clasificacion ")
+        self.title("Tipo de pelicula ")
         #setting window size
         width=461
         height=237

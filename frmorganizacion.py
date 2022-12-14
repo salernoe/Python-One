@@ -1,9 +1,9 @@
 import tkinter as tk
 import tkinter.font as tkFont
 from frmpeliculas import pelicula
-from frmclasificacion import clasificacion
+from frmtipo_de_pelicula import tipo_de_pelicula
 from frmbutacas import butacas
-
+from frmsesion import sesion
 
 class organizacion(tk.Toplevel):
     def __init__(self, master=None):
@@ -66,24 +66,24 @@ class organizacion(tk.Toplevel):
         GButton_345["justify"] = "center"
         GButton_345["text"] = "sesion"
         GButton_345.place(x=180,y=80,width=110,height=25)
-        GButton_345["command"] = self.GButton_345_command
+        GButton_345["command"] = self.abrir_sesion
 
     def abrir_peliculas(self):
         pelicula(self)
 
 
     def abrir_clasificacion(self):
-        clasificacion(self)
+         print("command")
 
 
     def GButton_773_command(self):
-        print("command")
+        tipo_de_pelicula(self)
 
 
     def abrir_butacas(self):
        butacas(self)
 
 
-    def GButton_345_command(self):
-        print("command")
+    def abrir_sesion(self):
+        sesion(self)
 
