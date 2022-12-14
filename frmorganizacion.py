@@ -1,6 +1,8 @@
 import tkinter as tk
 import tkinter.font as tkFont
 from frmpeliculas import pelicula
+from frmclasificacion import clasificacion
+from frmbutacas import butacas
 
 
 class organizacion(tk.Toplevel):
@@ -34,7 +36,7 @@ class organizacion(tk.Toplevel):
         GButton_148["justify"] = "center"
         GButton_148["text"] = "Clasificacion"
         GButton_148.place(x=180,y=40,width=110,height=25)
-        GButton_148["command"] = self.GButton_148_command
+        GButton_148["command"] = self.abrir_clasificacion
 
         GButton_773=tk.Button(self)
         GButton_773["bg"] = "#f0f0f0"
@@ -54,7 +56,7 @@ class organizacion(tk.Toplevel):
         GButton_305["justify"] = "center"
         GButton_305["text"] = "Butacas"
         GButton_305.place(x=40,y=80,width=110,height=25)
-        GButton_305["command"] = self.GButton_305_command
+        GButton_305["command"] = self.abrir_butacas
 
         GButton_345=tk.Button(self)
         GButton_345["bg"] = "#f0f0f0"
@@ -70,16 +72,16 @@ class organizacion(tk.Toplevel):
         pelicula(self)
 
 
-    def GButton_148_command(self):
-        Print("hola")
+    def abrir_clasificacion(self):
+        clasificacion(self)
 
 
     def GButton_773_command(self):
         print("command")
 
 
-    def GButton_305_command(self):
-        print("command")
+    def abrir_butacas(self):
+       butacas(self)
 
 
     def GButton_345_command(self):
