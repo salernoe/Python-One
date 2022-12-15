@@ -1,6 +1,6 @@
 from tkinter import *
 import tkinter.ttk as ttk
-import tkinter.font as tkFont
+import tkinter.font as tkFont # para generar grillas
 import tkinter.messagebox as tkMsgBox
 import bll.usuarios as user
 import bll.roles as rol
@@ -195,6 +195,7 @@ class User(Toplevel):
             usuario = user.obtener_id(user_id)
             if usuario is None:
                tkMsgBox.showerror(self.master.title(), "Se produjo un error al obtener los datos del usuario, reintente nuevamente")
+               #esto es caja de cometarios 
                self.destroy()
             else:
                 # TODO bloquear el campo usuario
