@@ -26,7 +26,7 @@ class Users(Toplevel):
         GLabel_464["justify"] = "center"
         GLabel_464["text"] = "Usuarios:"
         GLabel_464.place(x=10,y=10,width=70,height=25)
-
+# esto es para generar la grilla hay que importas
         tv = ttk.Treeview(self, columns=("usuario", "apellido", "nombre", "email", "rol"), name="tvUsuarios")
         tv.column("#0", width=78)
         tv.column("usuario", width=100, anchor=CENTER)
@@ -41,10 +41,10 @@ class Users(Toplevel):
         tv.heading("nombre", text="Nombre", anchor=CENTER)
         tv.heading("email", text="Correo electrónico", anchor=CENTER)
         tv.heading("rol", text="Rol", anchor=CENTER)
-        tv.bind("<<TreeviewSelect>>", self.obtener_fila)
+        tv.bind("<<TreeviewSelect>>", self.obtener_fila)# a a mi funcion 
         tv.place(x=10,y=40,width=750,height=300)          
         
-        self.refrescar()
+        self.refrescar() #importante para poder cambiar los datos 
 
         ft = tkFont.Font(family='Times',size=10)
         btn_agregar = Button(self)
@@ -103,3 +103,4 @@ class Users(Toplevel):
         usuarios = user.listar()
         for usuario in usuarios:
             tvUsuarios.insert("", END, text=usuario[0], values=(usuario[6], usuario[1], usuario[2], usuario[5], usuario[8])) 
+            #trae los datos a la grilla 
