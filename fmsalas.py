@@ -29,6 +29,13 @@ class salas(Toplevel):
         GLabel_464["text"] = "Usuarios:"
         GLabel_464.place(x=10,y=10,width=70,height=25)
 
+        #tv = ttk.Treeview(self, columns=("usuario", "apellido", "nombre", "email", "rol"), name="tvUsuarios")
+        #tv.column("#0", width=78)
+        #tv.column("usuario", width=100, anchor=CENTER)
+        #tv.column("apellido", width=150, anchor=CENTER)
+        #tv.column("nombre", width=150, anchor=CENTER)
+        #tv.column("email", width=150, anchor=CENTER)
+        #tv.column("rol", width=120, anchor=CENTER)
         tv = ttk.Treeview(self, columns=("sala", "pelicula", "butaca", "horario", "formato"), name="tvUsuarios")
         tv.column("#0", width=78)
         tv.column("sala", width=100, anchor=CENTER)
@@ -38,13 +45,21 @@ class salas(Toplevel):
         tv.column("formato", width=120, anchor=CENTER)
 
         #tv.heading("#0", text="Id", anchor=CENTER)
-       # tv.heading("sala", text="sala", anchor=CENTER)
+        #tv.heading("sala", text="sala", anchor=CENTER)
         #tv.heading("pelicual", text="pelicula", anchor=CENTER)
         #tv.heading("butaca", text="butaca", anchor=CENTER)
         #tv.heading("horario", text="horario", anchor=CENTER)
         #tv.heading("formato", text="formato", anchor=CENTER)
         #tv.bind("<<TreeviewSelect>>", self.obtener_fila)
         #tv.place(x=10,y=40,width=750,height=300)          
+        tv.heading("#0", text="Id", anchor=CENTER)
+        tv.heading("usuario", text="Usuario", anchor=CENTER)
+        tv.heading("apellido", text="Apellido", anchor=CENTER)
+        tv.heading("nombre", text="Nombre", anchor=CENTER)
+        tv.heading("email", text="Correo electrónico", anchor=CENTER)
+        tv.heading("rol", text="Rol", anchor=CENTER)
+        tv.bind("<<TreeviewSelect>>", self.obtener_fila)
+        tv.place(x=10,y=40,width=750,height=300)  
         
         self.refrescar()
 
