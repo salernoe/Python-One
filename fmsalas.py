@@ -3,15 +3,16 @@ import tkinter.font as tkFont
 import tkinter.ttk as ttk
 import tkinter.messagebox as tkMsgBox
 import bll.salas as  salas1
-#from wDescuentos import Descuento
+from fsalas import salas1
+import dal.db as db
 
 
-class salas(Toplevel):
+class salas1(Toplevel):
     def __init__(self, master=None):
         super().__init__(master)        
         self.master = master
         self.select_id = -1        
-        self.title("Salas")        
+        self.title("Salas1")        
         width=950
         height=400
         screenwidth = self.winfo_screenwidth()
@@ -25,7 +26,7 @@ class salas(Toplevel):
         GLabel_464["font"] = ft
         GLabel_464["fg"] = "#333333"
         GLabel_464["justify"] = "center"
-        GLabel_464["text"] = "salas"
+        GLabel_464["text"] = "salas1"
         GLabel_464.place(x= 300,y=10,width=200,height=40)
 
         tv = ttk.Treeview(self, columns=("Numero_de_sala", "Pelicula", "butaca","Horarios","Formato", "UsuarioId"), name="tvsalas")
@@ -97,10 +98,10 @@ class salas(Toplevel):
             self.select_id = -1
 
     def agregar(self):
-        salas(self)
+        salas1(self)
 
     def editar(self): 
-        salas(self, self.select_id)
+        salas1(self, self.select_id)
 
     def eliminar(self):
         answer =  tkMsgBox.askokcancel(self.master.master.title(), "¿Está seguro de eliminar este sala?")   
@@ -116,5 +117,5 @@ class salas(Toplevel):
         for record in tvsalas.get_children():
             tvsalas.delete(record)
         descuentos = salas1.listar()
-        for salas in salas:
-            tvsalas.insert("", END, text=salas[0], values=(salas[1], salas[2], salas[3])) 
+        for salas1 in salas1:
+            tvsalas.insert("", END, text=salas1[0], values=(salas1[1], salas1[2], salas1[3])) 
