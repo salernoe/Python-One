@@ -28,16 +28,23 @@ class salas(Toplevel):
         GLabel_464["text"] = "salas"
         GLabel_464.place(x= 300,y=10,width=200,height=40)
 
-        tv = ttk.Treeview(self, columns=("sala", "pelicula", "butaca"), name="tvsalas")
+        tv = ttk.Treeview(self, columns=("Numero_de_sala", "Pelicula", "butaca","Horarios","Formato", "UsuarioId"), name="tvsalas")
         tv.column("#0", width=78)
-        tv.column("sala", width=150, anchor=CENTER)
-        tv.column("pelicula", width=150, anchor=CENTER)
+        tv.column("Numero_de_sala", width=150, anchor=CENTER)
+        tv.column("Pelicula", width=150, anchor=CENTER)
         tv.column("butaca", width=150, anchor=CENTER)
-        
-        tv.heading("#0", text="ID", anchor=CENTER)
-        tv.heading("sala", text="sala", anchor=CENTER)
-        tv.heading("pelicula", text="pelicula", anchor=CENTER)
-        tv.heading("butaca", text="butaca", anchor=CENTER)       
+        tv.column("Horarios", width=150, anchor=CENTER)
+        tv.column("Formato", width=150, anchor=CENTER)
+        tv.column("UsuarioId", width=150, anchor=CENTER)
+
+
+        tv.heading("#0", text="idsalas", anchor=CENTER)
+        tv.heading("Numero_de_sala", text="Numero_de_sala", anchor=CENTER)
+        tv.heading("Pelicula", text="pelicula", anchor=CENTER)
+        tv.heading("butaca", text="butaca", anchor=CENTER) 
+        tv.heading("Horarios", text="Horarios", anchor=CENTER) 
+        tv.heading("Formato", text="Formato", anchor=CENTER)
+        tv.heading("UsuarioId", text="UsuarioId", anchor=CENTER)
         tv.bind("<<TreeviewSelect>>", self.obtener_fila)
         tv.place(x=10,y=50,width=780,height=300)          
         
