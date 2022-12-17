@@ -1,11 +1,11 @@
 from dal.db import Db
 
-def agregar(Numero_de_sala, Pelicula, butacas, Horarios, Formato, usuario, UsuarioIda):    
+def agregar(Numero_de_sala, Pelicula, butacas, Horarios, Formato, UsuarioId):    
     sql = "INSERT INTO Usuarios(Numero_de_sala, Pelicula,butacas, Horarios, Formato, Usuario,UsuarioId) VALUES(?, ?, ?, ?, ?, ?, ?, ?);"
-    parametros = (Numero_de_sala, Pelicula,butacas, Horarios, Formato, usuario, UsuarioId)
+    parametros = (Numero_de_sala, Pelicula,butacas, Horarios, Formato,UsuarioId)
     Db.ejecutar(sql, parametros)
 
-def actualizar(id, Numero_de_sala, Pelicula, butacas, Horarios, Formato, contrasenia, rol_Id):    
+def actualizar(id, Numero_de_sala, Pelicula, butacas, Horarios, Formato, UsuarioId, rol_Id):    
     sql = "UPDATE salas SET Numero_de_sala = ?, Pelicula = ?, butacas = ?,Horarios = ?, Formato = ?, UsuarioId = ? WHERE UsuarioId = ? AND Activo = 1;"
     parametros = (Numero_de_sala, Pelicula, butacas, Horarios, Formato, UsuarioId, id)
     Db.ejecutar(sql, parametros)    

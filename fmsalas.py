@@ -2,7 +2,7 @@ from tkinter import *
 import tkinter.font as tkFont
 import tkinter.ttk as ttk
 import tkinter.messagebox as tkMsgBox
-#import bll.Descuentos as desc
+import bll.salas as  salas1
 #from wDescuentos import Descuento
 
 
@@ -12,7 +12,7 @@ class salas(Toplevel):
         self.master = master
         self.select_id = -1        
         self.title("Salas")        
-        width=800
+        width=950
         height=400
         screenwidth = self.winfo_screenwidth()
         screenheight = self.winfo_screenheight()
@@ -105,7 +105,7 @@ class salas(Toplevel):
     def eliminar(self):
         answer =  tkMsgBox.askokcancel(self.master.master.title(), "¿Está seguro de eliminar este sala?")   
         if answer:
-            desc.eliminar(self.select_id)
+            salas1.eliminar(self.select_id)
             self.refrescar()
             
     def salir(self):
@@ -114,7 +114,7 @@ class salas(Toplevel):
     def refrescar(self):        
         tvsalas = self.nametowidget("tvDescuentos")
         for record in tvsalas.get_children():
-            tvsalsas.delete(record)
-        descuentos = desc.listar()
-        for descuento in descuentos:
+            tvsalas.delete(record)
+        descuentos = salas1.listar()
+        for salas in salas:
             tvsalas.insert("", END, text=salas[0], values=(salas[1], salas[2], salas[3])) 
