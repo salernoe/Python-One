@@ -2,18 +2,17 @@ from tkinter import *
 import tkinter.font as tkFont
 import tkinter.ttk as ttk
 import tkinter.messagebox as tkMsgBox
-import bll.salas as  salas1
-from fsalas import salas1
-import dal.db as db
+#import bll.Descuentos as desc
+#from wDescuentos import Descuento
 
 
-class salas1(Toplevel):
+class descuentos(Toplevel):
     def __init__(self, master=None):
         super().__init__(master)        
         self.master = master
         self.select_id = -1        
-        self.title("Salas1")        
-        width=950
+        self.title("Desacuento")        
+        width=800
         height=400
         screenwidth = self.winfo_screenwidth()
         screenheight = self.winfo_screenheight()
@@ -26,26 +25,19 @@ class salas1(Toplevel):
         GLabel_464["font"] = ft
         GLabel_464["fg"] = "#333333"
         GLabel_464["justify"] = "center"
-        GLabel_464["text"] = "salas1"
+        GLabel_464["text"] = "DESCUENTOS"
         GLabel_464.place(x= 300,y=10,width=200,height=40)
 
-        tv = ttk.Treeview(self, columns=("Numero_de_sala", "Pelicula", "butaca","Horarios","Formato", "UsuarioId"), name="tvsalas")
+        tv = ttk.Treeview(self, columns=("DIAS", "DESCUENTOS", "ESTADO"), name="tvDescuentos")
         tv.column("#0", width=78)
-        tv.column("Numero_de_sala", width=150, anchor=CENTER)
-        tv.column("Pelicula", width=150, anchor=CENTER)
-        tv.column("butaca", width=150, anchor=CENTER)
-        tv.column("Horarios", width=150, anchor=CENTER)
-        tv.column("Formato", width=150, anchor=CENTER)
-        tv.column("UsuarioId", width=150, anchor=CENTER)
-
-
-        tv.heading("#0", text="idsalas", anchor=CENTER)
-        tv.heading("Numero_de_sala", text="Numero_de_sala", anchor=CENTER)
-        tv.heading("Pelicula", text="pelicula", anchor=CENTER)
-        tv.heading("butaca", text="butaca", anchor=CENTER) 
-        tv.heading("Horarios", text="Horarios", anchor=CENTER) 
-        tv.heading("Formato", text="Formato", anchor=CENTER)
-        tv.heading("UsuarioId", text="UsuarioId", anchor=CENTER)
+        tv.column("DIAS", width=150, anchor=CENTER)
+        tv.column("DESCUENTOS", width=150, anchor=CENTER)
+        tv.column("ESTADO", width=150, anchor=CENTER)
+        
+        tv.heading("#0", text="ID", anchor=CENTER)
+        tv.heading("DIAS", text="DIAS", anchor=CENTER)
+        tv.heading("DESCUENTOS", text="DESCUENTOS", anchor=CENTER)
+        tv.heading("ESTADO", text="ESTADO", anchor=CENTER)       
         tv.bind("<<TreeviewSelect>>", self.obtener_fila)
         tv.place(x=10,y=50,width=780,height=300)          
         
@@ -89,33 +81,33 @@ class salas1(Toplevel):
         btn_salir["command"] = self.salir
         
     def obtener_fila(self, event):
-        tvsalas = self.nametowidget("tvsalas")
-        current_item = tvsalas.focus()
+        tvDescuentos = self.nametowidget("tvDescuentos")
+        current_item = tvDescuentos.focus()
         if current_item:
-            data = tvsalas.item(current_item)
+            data = tvDescuentos.item(current_item)
             self.select_id = int(data["text"])
         else:
             self.select_id = -1
 
     def agregar(self):
-        salas1(self)
+        Descuento(self)
 
     def editar(self): 
-        salas1(self, self.select_id)
+        Descuento(self, self.select_id)
 
     def eliminar(self):
-        answer =  tkMsgBox.askokcancel(self.master.master.title(), "¿Está seguro de eliminar este sala?")   
+        answer =  tkMsgBox.askokcancel(self.master.master.title(), "¿Está seguro de eliminar este descuento?")   
         if answer:
-            salas1.eliminar(self.select_id)
+            desc.eliminar(self.select_id)
             self.refrescar()
             
     def salir(self):
         self.destroy()
     
     def refrescar(self):        
-        tvsalas = self.nametowidget("tvDescuentos")
-        for record in tvsalas.get_children():
-            tvsalas.delete(record)
-        descuentos = salas1.listar()
-        for salas1 in salas1:
-            tvsalas.insert("", END, text=salas1[0], values=(salas1[1], salas1[2], salas1[3])) 
+        tvDescuentos = self.nametowidget("tvDescuentos")
+        for record in tvDescuentos.get_children():
+            tvDescuentos.delete(record)
+        descuentos = desc.listar()
+        for descuento in descuentos:
+            tvDescuentos.insert("", END, text=descuento[0], values=(descuento[1], descuento[2], descuento[3])) 

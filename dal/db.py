@@ -44,6 +44,24 @@ class Db:
                             "Activo"	INTEGER NOT NULL DEFAULT 1,
                             PRIMARY KEY("RolId")
                         );'''
+        sql_salas = '''CREATE TABLE "salas" (
+	                        "idsalas"	INTEGER NOT NULL UNIQUE,
+	                        "Numero_de_sala"	TEXT NOT NULL UNIQUE,
+	                        "Pelicula"	TEXT NOT NULL,
+	                        "butacas"	NUMERIC NOT NULL,
+	                        "Horarios"	TEXT NOT NULL,
+	                        "Formato"	TEXT NOT NULL,
+                            "UsuarioId"	TEXT,
+	                        FOREIGN KEY("UsuarioId") REFERENCES "Usuario"("UsuarioId"),
+	                        PRIMARY KEY("idsalas" AUTOINCREMENT)
+                        );'''
+        sql_descuentos = '''CREATE TABLE "descuentos " (
+	                        "id descuentod "	INTEGER NOT NULL,
+	                        "Dia"	TEXT NOT NULL,
+	                        "descuento"	REAL NOT NULL,
+	                        "estado"	INTEGER NOT NULL,
+	                        PRIMARY KEY("id descuentod " AUTOINCREMENT) 
+                        );'''
 
         tablas = {"Usuarios": sql_usuarios, "Roles": sql_roles}
 
