@@ -1,4 +1,5 @@
 from tkinter import *
+import tkinter as tk
 import tkinter.ttk as ttk
 import tkinter.font as tkFont # para generar grillas
 import tkinter.messagebox as tkMsgBox
@@ -6,7 +7,7 @@ import bll.salas as salas1
 import bll.usuarios as usuar
 
 class sala1(Toplevel):
-    def __init__(self, master=Numero_de_sala, idsalas = False, UsuarioId = None):        
+    def __init__(self, master=usuar, idsalas = False, UsuarioId = None):        
         super().__init__(master)
         self.master = master
         self.UsuarioId = UsuarioId      
