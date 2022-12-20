@@ -2,17 +2,17 @@ from tkinter import *
 import tkinter.font as tkFont
 import tkinter.ttk as ttk
 import tkinter.messagebox as tkMsgBox
-import bll.salas as  salas1
-from fsalas import salas1
+import bll.salas as sala
+#from fsalas import salas1
 import dal.db as db
 
 
-class salas1(Toplevel):
+class Salas(Toplevel):
     def __init__(self, master=None):
         super().__init__(master)        
         self.master = master
         self.select_id = -1        
-        self.title("Salas1")        
+        self.title("Listado de Salas")        
         width=950
         height=400
         screenwidth = self.winfo_screenwidth()
@@ -98,24 +98,26 @@ class salas1(Toplevel):
             self.select_id = -1
 
     def agregar(self):
-        salas1(self)
+        #sala(self)
+        pass
 
     def editar(self): 
-        salas1(self, self.select_id)
+        #salas1(self, self.select_id)
+        pass
 
     def eliminar(self):
         answer =  tkMsgBox.askokcancel(self.master.master.title(), "¿Está seguro de eliminar este sala?")   
         if answer:
-            salas1.eliminar(self.select_id)
+            #salas1.eliminar(self.select_id)
             self.refrescar()
             
     def salir(self):
         self.destroy()
     
     def refrescar(self):        
-        tvsalas = self.nametowidget("tvDescuentos")
+        tvsalas = self.nametowidget("tvsalas")
         for record in tvsalas.get_children():
             tvsalas.delete(record)
-        descuentos = salas1.listar()
+        descuentos = sala.listar()
         for salas1 in salas1:
             tvsalas.insert("", END, text=salas1[0], values=(salas1[1], salas1[2], salas1[3])) 

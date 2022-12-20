@@ -1,7 +1,7 @@
 import tkinter as tk
 import tkinter.font as tkFont
 from frmusers import Users
-from fmsalas import salas1
+from fmsalas import Salas
 from frmreservas import reservas
 from frmdescuentos import descuentos
 from frmorganizacion import organizacion
@@ -83,7 +83,7 @@ class Dashboard(tk.Toplevel):
         Users(self)
 
     def abrir_salas(self):
-        salas1(self)
+        Salas(self)
 
     def abrir_descuentos(self):
         descuentos(self)
