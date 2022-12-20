@@ -2,8 +2,8 @@ import sqlite3
 from datetime import date
 import hashlib
 
-database = "super.db" # todo: por ahora ponemos el nombre de la base aqui, ver mejor opcion
-
+#database = "super.db" 
+database = "tablatpfinal"
 class Db:
     @staticmethod
     def ejecutar(consulta, parametros = ()):
@@ -63,8 +63,7 @@ class Db:
 	                        PRIMARY KEY("id descuentod " AUTOINCREMENT) 
                         );'''
 
-        tablas = {"Usuarios": sql_usuarios, "Roles": sql_roles}
-
+        tablas = {"Usuarios": sql_usuarios, "Roles": sql_roles,"descuentos":sql_descuentos ,"salas": sql_salas} # de aca saque 
         with sqlite3.connect(database) as cnn:
             cursor = cnn.cursor()
             for tabla, sql in tablas.items():
@@ -81,7 +80,19 @@ class Db:
                         (3, "Operador"),
                         (4, "Cliente");'''
 
-        tablas = {"Roles": sql_roles}
+        sql_descuentos = '''INSERT INTO DESCUENTOS (Dia, descuento) 
+                        VALUES 
+                            ("LUNES", 0.2),
+                            ("MARTES", 0.15),
+                            ("MIERCOLES", 0.2),
+                            ("JUEVES", 0.15),
+                            ("VIERNES", 0.1),
+                            ("SABADO", 0.1),
+                            ("DOMINGO", 0.1);'''
+        
+
+        tablas = {"Roles": sql_roles, "descuentos":sql_descuentos } 
+                
 
         with sqlite3.connect(database) as cnn:
             cursor = cnn.cursor()
@@ -91,7 +102,6 @@ class Db:
                 count = int(cursor.fetchone()[0])
                 if count == 0:
                     cursor.execute(sql)
-
     @staticmethod
     def formato_fecha_db(fecha):
         return date(int(fecha[6:]), int(fecha[3:5]), int(fecha[0:2]))

@@ -35,15 +35,15 @@ def filtrar(salas):
     result = Db.consultar(sql, parametros)
     return result
 
-def validar(usuario, contrasenia):    
+"""def validar(usuario, contrasenia):     #comente esto por que no se de donde saale 
     sql = "SELECT Usuario FROM Usuarios WHERE Usuario = ? AND Contrasenia = ? AND Activo = 1;"
     parametros = (usuario, Db.encriptar_contraseña(contrasenia))
     result = Db.consultar(sql, parametros, False)
-    return result != None
+    return result != None"""
 
-def existe(usuario):
+def existe(sala):# cambie usuario por sala
     sql = "SELECT COUNT(*) FROM Usuarios WHERE Usuario = ? AND Activo = 1;"
-    parametros = (usuario,)
+    parametros = (sala,)
     result = Db.consultar(sql, parametros, False)
     count = int(result[0])
     return count == 1

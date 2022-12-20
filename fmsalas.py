@@ -3,7 +3,7 @@ import tkinter.font as tkFont
 import tkinter.ttk as ttk
 import tkinter.messagebox as tkMsgBox
 import bll.salas as sala
-#from fsalas import salas1
+#from fsalas import Salas1
 import dal.db as db
 
 
@@ -26,9 +26,9 @@ class Salas(Toplevel):
         GLabel_464["font"] = ft
         GLabel_464["fg"] = "#333333"
         GLabel_464["justify"] = "center"
-        GLabel_464["text"] = "salas1"
-        GLabel_464.place(x= 300,y=10,width=200,height=40)
-
+        GLabel_464["text"] = "salas"
+        GLabel_464.place(x= 10,y=10,width=200,height=40)
+# cambie de 300 a 10 la x 
         tv = ttk.Treeview(self, columns=("Numero_de_sala", "Pelicula", "butaca","Horarios","Formato", "UsuarioId"), name="tvsalas")
         tv.column("#0", width=78)
         tv.column("Numero_de_sala", width=150, anchor=CENTER)
@@ -98,11 +98,11 @@ class Salas(Toplevel):
             self.select_id = -1
 
     def agregar(self):
-        #sala(self)
+        #sala(self, True)
         pass
 
     def editar(self): 
-        #salas1(self, self.select_id)
+        #salas1(self,True, self.select_id)
         pass
 
     def eliminar(self):

@@ -3,10 +3,10 @@ import tkinter as tk
 import tkinter.ttk as ttk
 import tkinter.font as tkFont # para generar grillas
 import tkinter.messagebox as tkMsgBox
-import bll.salas as salas1
+import bll.salas as salas1 #ver si sigue este parametro
 import bll.usuarios as usuar
 
-class sala1(Toplevel):
+class Sala1(Toplevel):
     def __init__(self, master=usuar, idsalas = False, UsuarioId = None):        
         super().__init__(master)
         self.master = master
@@ -27,7 +27,9 @@ class sala1(Toplevel):
         GLabel_336["justify"] = "center"
         GLabel_336["text"] = "Numero de sala"
         GLabel_336.place(x=10,y=70,width=110,height=25)
-
+        
+         
+       
         GLabel_259=tk.Label(self)
         ft = tkFont.Font(family='Times',size=22)
         GLabel_259["font"] = ft
@@ -36,6 +38,7 @@ class sala1(Toplevel):
         GLabel_259["text"] = "Salas"
         GLabel_259.place(x=230,y=20,width=70,height=25)
 
+        
         GLineEdit_528=tk.Entry(self)
         GLineEdit_528["borderwidth"] = "1px"
         ft = tkFont.Font(family='Times',size=10)
@@ -113,8 +116,8 @@ class sala1(Toplevel):
         GLineEdit_292["text"] = "Entry"
         GLineEdit_292.place(x=120,y=270,width=100,height=30)
         
-        roles = dict(rol.listar())
-        if isAdmin:
+        roles = dict(rol.listar())# haca hay problea con el rol ver en la tabla roles bll
+        if idsalas:
             cb_roles = ttk.Combobox(self, state="readonly", values=list(roles.values()), name="cbRoles")
         else:
             cb_roles = ttk.Combobox(self, state="disabled", values=list(roles.values()), name="cbRoles")
@@ -141,20 +144,20 @@ class sala1(Toplevel):
         GButton_341.place(x=350,y=370,width=70,height=25)
         GButton_341["command"] = self.GButton_341_command
 
-        if user_id is not None:
-            usuario = user.obtener_id(user_id)
+        if idsalas is not None:
+            usuario = user.obtener_id(idsalas)
             if usuario is None:
                tkMsgBox.showerror(self.master.title(), "Se produjo un error al obtener los datos del usuario, reintente nuevamente")
                #esto es caja de cometarios 
                self.destroy()
             else:
                 # TODO bloquear el campo usuario
-                GLineEdit_871.insert(0, usuario[1])
-                GLineEdit_911.insert(0, usuario[2])
-                GLineEdit_208.insert(0, usuario[3]) # TODO corregir formato de fecha
-                GLineEdit_234.insert(0, usuario[4])
-                GLineEdit_384.insert(0, usuario[5])
-                GLineEdit_481.insert(0, usuario[6])                
+                GLineEdit_97.insert(0, usuario[1])
+                GLineEdit_292.insert(0, usuario[2])
+                GLineEdit_331.insert(0, usuario[3]) # TODO corregir formato de fecha
+                GLineEdit_528.insert(0, usuario[4])
+                GLineEdit_444.insert(0, usuario[5])
+                GLineEdit_292.insert(0, usuario[6])                
                 cb_roles.set(usuario[8])
 
     def get_value(self, name):
